@@ -11,4 +11,5 @@
   - Edit the config file
   - `pip install -r requirements.txt`
   - Run with python 3
+  - If you want to get the PID of the process, use `launcher.cmd`
   
