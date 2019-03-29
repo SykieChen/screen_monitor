@@ -6,7 +6,7 @@ import time
 
 
 class Monitor(object):
-    def __init__(self, config_file):
+    def load(self, config_file):
         config = json.load(config_file)
         self.area = tuple(config["area"])
         self.time_out = config["time_out"]
@@ -63,6 +63,7 @@ class Monitor(object):
 
 
 if __name__ == "__main__":
+    monitor = Monitor()
     with open("config.json", "r") as config:
-        monitor = Monitor(config)
-        monitor.start()
+        monitor.load(config)
+    monitor.start()
