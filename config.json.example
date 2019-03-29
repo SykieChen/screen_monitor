@@ -1,0 +1,22 @@
+{
+    "area": [
+        0,
+        40,
+        899,
+        547
+    ],
+    "time_out": 30,
+    "telegram": {
+        "bot_token": "123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11",
+        "chat_id": "123456789"
+        "retry": 10
+    },
+    "proxy":{ # if not need proxy, remove this part
+        "http": "http://10.10.1.10:1080", # HTTP proxy
+        # "http:": "socks5:user:pass@host:port" # socks5 proxy
+        "https": "https://10.10.1.11:3128", # HTTPS proxy
+        # "https": "socks5:user:pass@host:port", # socks5 proxy for https may result in SSL error
+        "ftp": "ftp://10.10.1.10:8080"
+    },
+    "debug": false  # debug mode saves captured image
+}
