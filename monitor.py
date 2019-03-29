@@ -18,6 +18,7 @@ class Monitor(object):
             self.proxy = config["proxy"]
         else:
             self.proxy = None
+        self.log("Started.")
 
     def log(self, text):
         print("[%s] %s" %
