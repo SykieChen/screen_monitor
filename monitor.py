@@ -34,7 +34,7 @@ class Monitor(object):
         while _retry > 0:
             try:
                 self.log("Sending notification...")
-                requests.post(self.call_back, data=payload, timeout=10, proxies=self.proxy)
+                # requests.post(self.call_back, data=payload, timeout=10, proxies=self.proxy)
                 _retry = -1
             except:
                 self.log("Network error, retry.")
@@ -54,7 +54,9 @@ class Monitor(object):
             if _img_new == _img_old:
                 self.log("Screen stuck!")
                 self.push()
-                input("Deal with the stuck, then press Enter to resume...")
+                while (input("Deal with the stuck, then type OK to resume...").upper() != "OK"):
+                    pass
+                self.log("Monitor resumed.")
             else:
                 self.log("Screen moving, OK.")
             _img_old = _img_new.copy()
