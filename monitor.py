@@ -4,6 +4,7 @@ import json
 import requests
 import time
 import io
+import sys
 
 
 class Monitor(object):
@@ -42,7 +43,7 @@ class Monitor(object):
                 r = json.loads(requests.post(self.call_back, data=payload, files=files, timeout=10, proxies=self.proxy).text)
                 self.log("OK: " + str(r["ok"]))
                 _retry = -1
-            except:
+            except requests.exceptions.ConnectionError:
                 self.log("Network error, retry.")
                 _retry -= 1
         if 0 == _retry:
@@ -73,6 +74,7 @@ class Monitor(object):
 
 
 if __name__ == "__main__":
+    sys.stderr = open(time.strftime("%Y%m%d%H%M%S", time.localtime()) + "err.log", 'a')
     monitor = Monitor()
     with open("config.json", "r") as config:
         monitor.load(config)

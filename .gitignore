@@ -1,3 +1,4 @@
 *.json
 *.bmp
 pid.txt
+*.log
