@@ -57,7 +57,15 @@ class Monitor(object):
         _img_old = ImageGrab.grab(bbox=self.area)
         while 1:
             time.sleep(self.time_out)
-            _img_new = ImageGrab.grab(bbox=self.area)
+            _retry = True
+            while _retry:
+                try:
+                    _img_new = ImageGrab.grab(bbox=self.area)
+                except OSError:
+                    self.log("Screen grab failed, wait 1s and retry.")
+                else:
+                    _retry = False
+
             if _img_new == _img_old:
                 self.log("Screen stuck!")
                 _img_byte = io.BytesIO()
